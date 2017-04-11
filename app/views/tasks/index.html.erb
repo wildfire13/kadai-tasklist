@@ -1,10 +1,10 @@
 <h1>Tasklist_一覧</h1>
 
 <table>
-	<tr><th>#</th><th>id</th><th>content</th><th></th><th></th></tr>
+	<tr><th>#</th><th>id</th><th>status</th><th>content</th><th></th><th></th></tr>
   <% number = 0 %>
 	<% @tasks.each do |task| %>
-  	<tr><td><%= number += 1 %></td><td><%= link_to task.id, task %></td><td><%= task.content %></td><td><%= link_to "編集", edit_task_path(task) %></td><td><%= link_to "削除", task, method: :delete, data: { confirm: "本当に削除しますか？"} %></td></tr>
+  	<tr><td><%= number += 1 %></td><td><%= link_to task.id, task %></td><td><%= task.status %></td><td><%= task.content %></td><td><%= link_to "編集", edit_task_path(task) %></td><td><%= link_to "削除", task, method: :delete, data: { confirm: "本当に削除しますか？"} %></td></tr>
 	<% end %>
 </table>
 
