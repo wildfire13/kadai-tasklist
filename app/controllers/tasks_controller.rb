@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :destroy]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,20 +9,16 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.order("created_at DESC").page(params[:page]).per(10)
   end
 
-
   def show
     @task = Task.find(params[:id])
   end
-
 
 	def new
     @task = Task.new
 	end
 
-
   def create
     @task = current_user.tasks.build(task_params)
-
     if @task.save
       flash[:success] = "正常に登録されました。"
       redirect_to root_url
@@ -50,13 +46,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    
     flash[:success] = "正常に削除されました。"
     redirect_back(fallback_location: root_path)
   end
 
 
   private
+
+
   def set_task
       @task = Task.find(params[:id])
   end

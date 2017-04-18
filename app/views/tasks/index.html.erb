@@ -16,7 +16,7 @@
 	  			<td><%= task.status %></td>
 	  			<td><%= task.content %></td>
 	  			<td><%= link_to "Edit", edit_task_path(task), class: "btn btn-default" %></td>
-	  			<td><%= link_to "Delete", task, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %></td>
+	  			<td><%= link_to "Delete", task, class: "btn btn-danger", method: :delete, data: { confirm: "You sure?"} %></td>
 				</tr>
 			<% end %>
 		</tbody>
